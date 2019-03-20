@@ -1,0 +1,70 @@
+Jag drömde fram en använding för curses!
+
+Den allra första "ordbehandlaren" jag använde var
+StarTexter till C64. När man startade programmet liksom
+öppnades en scen upp, som gardiner på en gammal teater.
+
+Mitt journalförande i Google Docs skulle kunna få sig
+en boost både i skrivhastighet, och sökhastighet, med
+ett liknande verktyg. Det ska vara lika "sömlöst" som
+google docs är i kombination med mitt "journal" alias.
+
+Om jag ska vara lite modern och beskriva problem med
+min nuvarande upplevelse, som löses av ett sådant här
+program jag redan för mitt inre döpt till "JJ", en
+tillägnan till hjälten i Zillion, med betydelsen "Job
+Journal":
+
+ - broken: svårt att söka i alla tidigare journaler.
+   Detta eftersom google docs inte skalar till mer än
+   c:a 20 sidor, sedan blir laddningstiden flera sekunder,
+   och för att det dagliga skrivandet inte ska bli ett irritationsmoment,
+   delar jag upp dem i ny journal när det börjar kännas
+   segt. Det blir c:a 6 månader per journaldokument.
+   Så för att söka efter något ordentligt, behöver jag
+   öppna upp den journal jag gissar innehåller svaret,
+   men det kan bli 2-3 journaler innan jag hittat rätt.
+ - ram: administrationen med att dela upp och länka fram/tillbaka
+   är en viss overhead, som inte är helt otrevligt förvisso
+   men det är ju definitivt något som kommer ivägen i vardagen.
+ - ram: en annan administration är "journal" aliaset på mina datorer.
+   att uppdatera denna länk brukade vara ett N problem där
+   N står för antalet datorer jag "jobbar i och omkring",
+   (jag journalför inte alltid på själva jobbdatorn, utan
+   ibland på hemmadatorer när jag minns något jag vill skriva
+   ner)
+ - skrivande: Stilen jag använder, alltså dagens datum kursivt, inläggs-
+   rubrik fetstil, brödtext normalt och kodsnuttar blå-
+   markerad courier, blir också viss overhead med penseltool
+   framför allt (övriga finns som keyboard shortcuts och därmed
+   alltid tillgängliga).
+
+Söndag 17e mars 2019
+ git clone blabla - bla bla bla.
+
+    def fn():
+        dsofjisodifj
+
+sodifjsodf osidjf sdoijf sdoif
+
+
+
+
+
+Till Google Docs försvar är detta fördelarna:
+ + online/bakup automatiskt.
+ + snygg formattering möjlig, d.v.s bra läsupplevelse.
+ + inklistring av bilder "a breeze".
+
+
+Om jag skulle bygga "JJ" med Python/curses skulle följande
+vara möjligt:
+
++ automatiskt ifyllning av dagens datum formatterat på
+  mitt sätt Torsdagen 17e mars 2019, (dock ej kursivt!)
++ möjlighet att förenkla rubrikmarkering, normaltext och
+  blåmarkering
++ möjlighet att söka i allt tidigare material i enklaste
+  form mha grep (.json "databas") men trevligare direkt
+  i JJ
+
