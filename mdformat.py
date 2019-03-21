@@ -3,10 +3,10 @@ import webbrowser
 
 
 with open('tmp.html') as f:
-	html = f.read()
+    html = f.read()
 
 with open('jj.html', 'w') as f:
-	md = """
+    md = """
 Searched for "git" found these entries:
 =======================================
 
@@ -17,12 +17,12 @@ Onsdag 20e mars 2019
 
 Ett Python kodexempel:
 
-	def fn(x, y):
-		return 2
+    def fn(x, y):
+        return 2
 
 
 """
-	content = markdown2.markdown(md)
-	f.write(html.replace('{{ content }}', content))
+    content = markdown2.markdown(md)
+    f.write(html.replace('{{ content }}', content))
 
 webbrowser.open('jj.html')

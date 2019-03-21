@@ -1,2 +1,2 @@
 test:
-	( . .env/bin/activate && python mdformat.py )
+	( . .env/bin/activate && NOSE_REDNOSE=1 nosetests )
