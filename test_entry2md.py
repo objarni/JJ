@@ -27,7 +27,16 @@ def entry2md(entry):
     return '\n'.join(entry2md_inner(entry.splitlines()))
 
 
-class TestToplevel(unittest.TestCase):
+class TestBoldRowRegex(unittest.TestCase):
+
+    def test_no_math(self):
+        self.assertEqual(None, parse_boldrow('Hejsan hej'))
+
+    def test_math(self):
+        self.assertEqual(('git', 'ett dvcs program'), parse_boldrow('git - ett dvcs program'))
+
+
+class TestEntry2md(unittest.TestCase):
 
     def test_simple_entry(self):
         entry = 'git co -b branch - skapa och checka ut ny branch.'
@@ -41,10 +50,3 @@ class TestToplevel(unittest.TestCase):
         expected_md = entry
         self.assertEqual(expected_md.strip(), entry2md(entry).strip())
 
-class TestRegex(unittest.TestCase):
-
-    def test_no_math(self):
-        self.assertEqual(None, parse_boldrow('Hejsan hej'))
-
-    def test_math(self):
-        self.assertEqual(('git', 'ett dvcs program'), parse_boldrow('git - ett dvcs program'))
