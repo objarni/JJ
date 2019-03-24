@@ -6,9 +6,12 @@ class Action(Enum):
 
 
 JJ_EDITOR, JJ_SEARCH = range(2)
-HELP_TEXT = """Usage: JJ [keyword]\n\tMake sure JOURNAL env.var points to journal
- in .json format. If keyword is left out, edits todays journal entry. Otherwise,
- display all entries containing keyword."""
+HELP_TEXT = """\
+Usage: JJ [keyword]
+   Make sure JOURNAL env.var points to journal
+   in .json format. If keyword is left out, edit
+   todays journal entry. Otherwise, display all
+   entries containing keyword."""
 
 def startup_behaviour(args, journal_path):
     if journal_path is None:
