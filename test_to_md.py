@@ -34,21 +34,14 @@ class TestSearchResult2md(unittest.TestCase):
 
 
     def test_single_entry_found(self):
-#         expected = """
-# Hittade "2019" i följande anteckningar
-# ======================================
-
-# Onsdag 5e mars 2019
-# -------------------
-
-# **git branch** - lista branches
-# """
         expected = """
 Hittade "2019" i följande anteckningar
 ======================================
 
 Tisdag 5e mars 2019
 -------------------
+
+**git branch** - lista branches
 """
         result = search_for('2019', JOURNAL)
         got = result2md(result, '2019')

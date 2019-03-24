@@ -38,17 +38,6 @@ def parse_date(d):
     return map(int, d.split('-'))
 
 
-def result2md(result, keyword):
-    header = 'Hittade "{}" i följande anteckningar'.format(keyword)
-    header += '\n' + '=' * ulen(header) + '\n\n'
-    body = ""
-    for date, entry in result:
-        (y, m, d) = parse_date(date)
-        datestr = swedate(y, m, d)
-        body += '{}\n{}\n\n'.format(datestr, '-' * ulen(datestr))
-    return header + body
-
-
 SWEWEEKDAYS = u'Måndag Tisdag Onsdag Torsdag Fredag Lördag Söndag'.split()
 SWEMONTHS = u'januari februari mars april maj juni juli augusti september oktober november december'.split()
 
@@ -65,3 +54,17 @@ def swedate(year, month, day):
         month=swemonth,
         year=year
     )
+
+def result2md(result, keyword):
+    header = 'Hittade "{}" i följande anteckningar'.format(keyword)
+    header += '\n' + '=' * ulen(header) + '\n\n'
+    body = ""
+    for date, entry in result:
+        (y, m, d) = parse_date(date)
+        datestr = swedate(y, m, d)
+        body += '{date}\n{dateline}\n\n{entry}\n\n'.format(
+            date=datestr,
+            dateline='-' * ulen(datestr),
+            entry=entry2md(entry)
+        )
+    return header + body
