@@ -6,4 +6,7 @@ def search_for_inner(keyword, journal):
 
 
 def search_for(keyword, journal):
-    return list(search_for_inner(keyword, journal))
+    return sorted(
+    	list(search_for_inner(keyword, journal)),
+    	reverse=True
+    )

@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
 import os
 import sys
 import json
 
 from jj import startup_behaviour, Action, HELP_TEXT
 from search import search_for
+from tomd import result2md
 
 
 def load_journal(journal_path):
@@ -21,7 +23,7 @@ if __name__ == '__main__':
         keyword = sys.argv[1]
         journal = load_journal(journal_path)
         result = search_for(keyword, journal)
-        for date, entry in result:
-            print('{}: {}'.format(date, entry))
+        md = result2md(result, keyword)
+        print(md)
     else:
         print(result)

@@ -30,23 +30,6 @@ class TestEntry2md(unittest.TestCase):
         self.assertEqual(expected_md.strip(), entry2md(entry).strip())
 
 
-class TestSearchResult2md(unittest.TestCase):
-
-
-    def test_single_entry_found(self):
-        expected = """
-Hittade "2019" i följande anteckningar
-======================================
-
-Tisdag 5e mars 2019
--------------------
-
-**git branch** - lista branches
-"""
-        result = search_for('2019', JOURNAL)
-        got = result2md(result, '2019')
-        self.assertEqual(expected.strip(), got.strip())
-
 class TestNiceSwedishJournalDateFormatting(unittest.TestCase):
 
     def test_sunday24th_of_march_2019(self):
@@ -60,3 +43,24 @@ class TestNiceSwedishJournalDateFormatting(unittest.TestCase):
 
     def test_sunday31st_of_march_2019(self):
         self.assertEqual(u"Söndag 31a mars 2019", swedate(2019, 3, 31))
+
+
+class TestSearchResult2md(unittest.TestCase):
+
+    def test_single_entry_found(self):
+        expected = u"""
+Hittade "2019" i följande anteckningar
+======================================
+
+Tisdag 5e mars 2019
+-------------------
+
+**git branch** - lista branches
+"""
+        result = search_for(u'2019', JOURNAL)
+        import sys
+        print(sys.version)
+        print(type(u''))
+        print(type(''))
+        got = result2md(result, u'2019')
+        self.assertEqual(expected.strip(), got.strip())

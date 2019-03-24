@@ -31,6 +31,7 @@ def entry2md(entry):
 
 
 def ulen(s):
+    return len(s)
     return len(s.decode('utf-8'))
 
 
@@ -45,7 +46,7 @@ SWEMONTHS = u'januari februari mars april maj juni juli augusti september oktobe
 def swedate(year, month, day):
     dt = datetime.datetime(year, month, day)
     sweday = SWEWEEKDAYS[dt.weekday()]
-    ending = 'a' if day in [1, 31] else 'e'
+    ending = u'a' if day in [1, 31] else u'e'
     swemonth = SWEMONTHS[month - 1]
     return u'{weekday} {day}{end} {month} {year}'.format(
         weekday=sweday,
@@ -56,13 +57,13 @@ def swedate(year, month, day):
     )
 
 def result2md(result, keyword):
-    header = 'Hittade "{}" i följande anteckningar'.format(keyword)
-    header += '\n' + '=' * ulen(header) + '\n\n'
+    header = u'Hittade "{}" i följande anteckningar'.format(keyword)
+    header += u'\n' + (u'=' * ulen(header)) + u'\n\n'
     body = ""
     for date, entry in result:
         (y, m, d) = parse_date(date)
         datestr = swedate(y, m, d)
-        body += '{date}\n{dateline}\n\n{entry}\n\n'.format(
+        body += u'{date}\n{dateline}\n\n{entry}\n\n'.format(
             date=datestr,
             dateline='-' * ulen(datestr),
             entry=entry2md(entry)

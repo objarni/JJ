@@ -5,7 +5,7 @@ import unittest
 
 from search import search_for
 
-JOURNAL = json.loads(u"""
+JOURNAL = json.loads("""
 {
     "2018-01-01": "git co -b branch - bygg och checka ut en branch",
     "2018-06-05": "git pull - ta hem senaste ändringar och uppdatera denna branch",
@@ -34,7 +34,7 @@ class TestSearch(unittest.TestCase):
         self.assertEqual(
             [
                 ("2019-03-05", "git branch - lista branches"),
-                ("2018-06-05", u"git pull - ta hem senaste ändringar och uppdatera denna branch"),
+                ("2018-06-05", "git pull - ta hem senaste ändringar och uppdatera denna branch"),
                 ("2018-01-01", "git co -b branch - bygg och checka ut en branch"),
             ],
             search_for('git', JOURNAL)
