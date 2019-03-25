@@ -10,7 +10,7 @@ from tomd import result2md
 from mdformat import render_html
 
 
-HTML_TMP_FILE = '/tmp/jj.html'
+HTML_TMP_FILE = '/tmp/search_result.html'
 
 
 def load_journal(journal_path):
