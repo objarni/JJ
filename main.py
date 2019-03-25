@@ -28,10 +28,13 @@ if __name__ == '__main__':
         keyword = sys.argv[1]
         journal = load_journal(journal_path)
         result = search_for(keyword, journal)
-        md = result2md(result, keyword)
-        html = render_html(md)
-        with open(HTML_TMP_FILE, 'w') as f:
-            f.write(html)
-        webbrowser.open(HTML_TMP_FILE)
+        if len(result) == 0:
+            print("Not found.")
+        else:
+            md = result2md(result, keyword)
+            html = render_html(md)
+            with open(HTML_TMP_FILE, 'w') as f:
+                f.write(html)
+            webbrowser.open(HTML_TMP_FILE)
     else:
         print(result)
