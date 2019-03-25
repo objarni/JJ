@@ -2,10 +2,15 @@
 import os
 import sys
 import json
+import webbrowser
 
 from jj import startup_behaviour, Action, HELP_TEXT
 from search import search_for
 from tomd import result2md
+from mdformat import render_html
+
+
+HTML_TMP_FILE = '/tmp/jj.html'
 
 
 def load_journal(journal_path):
@@ -24,6 +29,9 @@ if __name__ == '__main__':
         journal = load_journal(journal_path)
         result = search_for(keyword, journal)
         md = result2md(result, keyword)
-        print(md)
+        html = render_html(md)
+        with open(HTML_TMP_FILE, 'w') as f:
+            f.write(html)
+        webbrowser.open(HTML_TMP_FILE)
     else:
         print(result)
