@@ -13,6 +13,7 @@ from mdformat import render_html
 
 HTML_TMP_FILE = '/tmp/search_result.html'
 EDIT_TMP_FILE = '/tmp/jj.txt'
+HTML_TEMPLATE = 'template.html'
 
 
 def load_journal(journal_path):
@@ -34,6 +35,7 @@ if __name__ == '__main__':
     args = sys.argv[1:]
     journal_path = os.environ.get('JOURNAL', None)
     result = startup_behaviour(args, journal_path)
+
     if result == Action.EDIT:
         journal = load_journal(journal_path)
         date = today().strftime("%Y-%m-%d")
@@ -46,6 +48,7 @@ if __name__ == '__main__':
             entry = f.read()
         journal[date] = entry
         save_journal(journal, journal_path)
+
     elif result == Action.SEARCH:
         keyword = sys.argv[1]
         journal = load_journal(journal_path)
@@ -53,10 +56,14 @@ if __name__ == '__main__':
         if len(result) == 0:
             print("Not found.")
         else:
+            with open(HTML_TEMPLATE) as f:
+                template = f.read()
             md = result2md(result, keyword)
-            html = render_html(md)
+            html_body = render_html(md)
+            html = template.replace("{{ content }}", html_body)
             with open(HTML_TMP_FILE, 'w') as f:
                 f.write(html)
             webbrowser.open(HTML_TMP_FILE)
+
     else:
         print(result)
