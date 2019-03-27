@@ -13,7 +13,24 @@ from mdformat import render_html
 
 HTML_TMP_FILE = '/tmp/search_result.html'
 EDIT_TMP_FILE = '/tmp/jj.txt'
-HTML_TEMPLATE = 'template.html'
+HTML_TEMPLATE = """
+<head>
+    <meta charset="utf-8">
+    <title>JJ</title>
+
+    <style>
+        code {color: blue;}
+        pre {color: blue;}
+    </style>
+
+</head>
+<body>
+
+{{ content }}
+
+</body>
+</html>
+"""
 
 
 def load_journal(journal_path):
@@ -56,14 +73,12 @@ if __name__ == '__main__':
         if len(result) == 0:
             print("Not found.")
         else:
-            with open(HTML_TEMPLATE) as f:
-                template = f.read()
             md = result2md(result, keyword)
             html_body = render_html(md)
-            html = template.replace("{{ content }}", html_body)
+            html = HTML_TEMPLATE.replace("{{ content }}", html_body)
             with open(HTML_TMP_FILE, 'w') as f:
                 f.write(html)
-            webbrowser.open(HTML_TMP_FILE)
+            os.system('surf ' + HTML_TMP_FILE)
 
     else:
         print(result)
